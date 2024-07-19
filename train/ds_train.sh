@@ -11,8 +11,8 @@ deepspeed --master_port 29510 \
         --do_train \
 		--do_eval \
 		--save_total_limit=100 \
-        --train_file ../data/data_heldout_action_sg/fast_system.train.jsonl \
-		--validation_file ../data/data_heldout_action_sg/fast_system.test.jsonl \
+        --train_file ../data/fast_system.train.jsonl \
+		--validation_file ../data/fast_system.test.jsonl \
 		--predict_with_generate 0 \
         --learning_rate 1e-4 \
 		--adam_eps 1e-06 \

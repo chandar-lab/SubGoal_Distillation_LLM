@@ -10,29 +10,52 @@ While Large Language Models (LLMs) have demonstrated significant promise as agen
 
 # Install
 
-`pip install -r requirements.txt`
+```bash
+pip install -r requirements.txt
+```
 
-1- Generate dataset
+# Usage
+## 1- Generate dataset
 
-2- Train models
+Codes for generating dataset are in `/data`.
 
-3- Run agnet 
- 
- parser.add_argument("--dir", default='/data/data_v4_all_first_sg/data_dir/test/')
+       - unzip data/goldpaths-all.zip
+       - python data/data_convert.py
+       - python data/read_file.py
 
-        parser.add_argument("--lm_path", default= 'path to action generator model (executor)')
-        parser.add_argument("--sg_lm_path", help='path to sg generator checkpoint model (controller)')
-        parser.add_argument("--Fsg_lm_path", default='path to first sg checkpoint model') 
+## 2- Train models
+
+Codes for train models are in `/train`. Three models which are small LM are required to fine-tune: 1- action generator (executor), 2- sub-goal generator (contoroller), 3- first sub-goal generator. 
+
+To train each of them, run its `ds_train*.sh` bash file. Set `cache_dir` to a path for cache, `model_name` to the LM name in HF, and `output_dir` to a path to save the checkpoints
+
+```bash
+bash ds_train.sh $cache_dir $model_name $output_dir
+bash ds_train_sg.sh $cache_dir $model_name $output_dir
+bash ds_train_sg_first.sh $cache_dir $model_name $output_dir
+```
+
+## 3- Run agnet 
+
+
+The agent is in `/evaluation`. To run it do:
+
+```bash
+python evaluation/agent.py --dir 'test_dataset_path' --lm_path 'path_to_executor' --sg_lm_path 'path_to_controller' --Fsg_lm_path 'path_to_first_sg_generator'
+```
+
 
 
 # Citation
 
-`@inproceedings{
+```bash
+@inproceedings{
 hashemzadeh2024sub,
 title={Sub-goal Distillation: A Method to Improve Small Language Agents},
 author={Hashemzadeh, Maryam and Stengel-Eskin, Elias and Chandar, Sarath and Cote, Marc-Alexandre},
 booktitle={Third Conference on Lifelong Learning Agents (CoLLAs)},
 year={2024},
 url={https://arxiv.org/abs/2405.02749}
-}`
+}
+```
 

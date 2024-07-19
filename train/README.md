@@ -1,24 +1,8 @@
 
-## Installation
 
+# Train models
 
-```bash
-conda create -n swiftsage python=3.8 pip
-conda activate swiftsage
-pip3 install scienceworld==1.1.3
-pip3 install -r deepspeed_reqs.txt
-pip3 install torch --extra-index-url https://download.pytorch.org/whl/cu116
-conda install -c "nvidia/label/cuda-11.6.0" cuda-toolkit
-conda install -c conda-forge openjdk # if needed 
-```
-
-
-
-
-
-## Run different agents
-
-Run ```executable.sh``` by
+To train all the three models you can simply run ```executable.sh``` by
 
 ```bash
 /executable.sh 
@@ -36,3 +20,17 @@ In each ```run_*.sh``` the main bash file named ```ds_train*.sh``` is called whi
 The path of the data to fine tune the models and all the parameters of the models like epoch, learning rate, ... set in ```ds_train*.sh``` file.
 
 
+
+## Installation
+
+```ds_train*.sh``` files are based on `deepspeed`. To install it do the following steps:
+
+```bash
+conda create -n swiftsage python=3.8 pip
+conda activate swiftsage
+pip3 install scienceworld==1.1.3
+pip3 install -r deepspeed_reqs.txt
+pip3 install torch --extra-index-url https://download.pytorch.org/whl/cu116
+conda install -c "nvidia/label/cuda-11.6.0" cuda-toolkit
+conda install -c conda-forge openjdk # if needed 
+```
