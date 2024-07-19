@@ -1,6 +1,6 @@
 # SUB-GOAL DISTILLATION: A METHOD TO IMPROVE SMALL LANGUAGE AGENTS
 
-This is the official repository for [SUB-GOAL DISTILLATION: A METHOD TO IMPROVE SMALL LANGUAGE AGENTS](https://arxiv.org/abs/2405.02749), accepted at CoLLAs 2024. Our code base is a modification and extension of the existing [SwiftSage](https://github.com/yuchenlin/SwiftSage) repository.
+This is the official repository for [SUB-GOAL DISTILLATION: A METHOD TO IMPROVE SMALL LANGUAGE AGENTS](https://arxiv.org/abs/2405.02749), accepted at CoLLAs 2024 (Oral). Our code base is a modification and extension of the existing [SwiftSage](https://github.com/yuchenlin/SwiftSage) repository.
 
 
 # Abstract
