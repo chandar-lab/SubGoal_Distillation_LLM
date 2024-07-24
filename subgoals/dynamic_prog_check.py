@@ -1,4 +1,4 @@
-''' The function find_mismatched finds the mismatched parts in the generated responses by the LLM'''
+""" The function find_mismatched finds the mismatched parts in the generated responses by the LLM"""
 
 
 def find_mismatched(l1, l2):
