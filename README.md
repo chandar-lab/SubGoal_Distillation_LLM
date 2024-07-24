@@ -25,7 +25,7 @@ Codes for generating dataset are in `/data`.
 
 ## 2- Train models
 
-Codes for train models are in `/train`. Three models which are small LM are required to fine-tune: 1- action generator (executor), 2- sub-goal generator (contoroller), 3- first sub-goal generator. 
+Codes for training the models are in `/train`. Three models which are small LM required to be fine-tuned: 1- action generator (executor), 2- sub-goal generator (contoroller), 3- first sub-goal generator. 
 
 To train each of them, run its `ds_train*.sh` bash file. Set `cache_dir` to a path for cache, `model_name` to the LM name in HF, and `output_dir` to a path to save the checkpoints
 
@@ -61,4 +61,4 @@ url={https://arxiv.org/abs/2405.02749}
 
 # Acknowledgements
 
-We thank SwiftSage implementation, which this repo is based upon.
+We thank the authors of SwiftSage repository, which this repo is based upon.

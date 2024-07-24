@@ -39,7 +39,7 @@ def get_file_name(args, task_num):
 
 
 def creat_semi_random_sg(first_subgoal, PossibleObjects, locations):
-    ### this function chnage the objects or locations in the subgoals to generates semi-random subgoals.
+    '''this function change the objects or locations in the subgoals to generates semi-random subgoals.'''
     params_list = []
     st = first_subgoal.find('(')
     end = first_subgoal.find(')')

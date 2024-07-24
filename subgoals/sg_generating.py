@@ -39,6 +39,9 @@ mode_gpt = 'gpt4' # you can chnage it to either 'chatgpt' or 'gpt4'
 mode_gpt_first = 'gpt-4' # for chatgpt choose 'gpt-3.5-turbo-0613'
 
 def sg_generator(gold_path, task_desc, VarId, steps, curr_task_seq, task_name_id):
+    '''
+    This function generates the subgoals
+    '''
     main_file_name = 'prompts'
     file_name = f"{main_file_name}/{task_name_id}_{mode_gpt}"
     prompt_file = file_name + ".jsonl"
@@ -101,7 +104,7 @@ def sg_generator(gold_path, task_desc, VarId, steps, curr_task_seq, task_name_id
     return steps, subgoals_list_insteps
 
 def create_samples(curr_task_seq):
-
+    ''' This function create samples for the prompting.'''
     samples = []
 
     for seq_sample in curr_task_seq:
@@ -141,7 +144,7 @@ def create_samples(curr_task_seq):
     return samples[0], samples[1]
 
 def create_initialprompt_start(sample1, prompt_file):
-    ### for boiling
+    ''' This function create samples for the prompting using the samples.'''
     task_desc1 = 'Your task is to boil water. For compounds without a boiling point, combusting the substance is also acceptable. First, focus on the substance. Then, take actions that will cause it to change its state of matter.'
     path1 = ['open door to kitchen', 'go to kitchen', 'pick up thermometer', 'open cupboard', 'pick up metal pot', 'move metal pot to sink', 'activate sink', 'deactivate sink', 'pick up metal pot', 'focus on substance in metal pot', 'pour metal pot into metal pot', 'pick up metal pot', 'move metal pot to stove', 'activate stove', 'examine substance in metal pot', 'use thermometer in inventory on substance in metal pot', 'examine substance in metal pot', 'use thermometer in inventory on substance in metal pot', 'examine substance in metal pot', 'use thermometer in inventory on substance in metal pot', 'examine substance in metal pot', 'use thermometer in inventory on substance in metal pot', 'examine substance in metal pot', 'use thermometer in inventory on substance in metal pot', 'examine substance in metal pot', 'use thermometer in inventory on substance in metal pot', 'examine substance in metal pot', 'use thermometer in inventory on substance in metal pot', 'examine substance in metal pot', 'use thermometer in inventory on substance in metal pot', 'examine substance in metal pot', 'use thermometer in inventory on substance in metal pot', 'examine substance in metal pot', 'use thermometer in inventory on substance in metal pot', 'examine steam', 'use thermometer in inventory on steam', 'wait1', 'wait1']
     goalpath1 = ''
@@ -177,7 +180,7 @@ def create_initialprompt_start(sample1, prompt_file):
     return messages
 
 def create_initialprompt(path2, task_desc2, messages):
-
+    ''' This function create samples for the prompting for the second task'''
     goalpath2 = ''
     for step in path2:
         goalpath2 += step + ', '
@@ -347,6 +350,7 @@ def sg_extraction_completion(instr):
     return actions_list, subgoal_action_index_list
 
 def check_action_sg(actions_list, gold_path, sg_act_idx_list, task_desc, chatgpt_answer):
+    ''' This function check the matching action step with the generated actions'''
     print(f'len goal path {len(gold_path)} ---- len action seq {len(actions_list)}')
     x, y = find_mismatched(gold_path, actions_list)
     add_list = y[1]  # it is tuple
@@ -444,6 +448,7 @@ def check_action_sg(actions_list, gold_path, sg_act_idx_list, task_desc, chatgpt
     return check_action_sg(new_action_l, gold_path, sg_act_idx_list, task_desc, chatgpt_answer)
 
 def create_prompt_inmiddle(missed_action_list, task_desc, gold_path, chatgpt_answer):
+    ''' This function create prompting for the missed action.'''
     goalpath1 = ''
     for step in gold_path:
         goalpath1 += step + ', '
