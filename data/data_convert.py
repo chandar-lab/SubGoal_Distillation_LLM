@@ -15,6 +15,7 @@ parser.add_argument('--uniform', action = 'store_true')
 parser.add_argument('--data_split', action = 'store_true', help = 'split subtasks into train/test subtask')
 parser.add_argument('--task_id', type = str, default = '29', help = 'the task id')
 parser.add_argument('--labeling', type = str, default = 'sg', help = 'indicate whether the output is actions or subgoals, it would be either <sg> or <action>')
+parser.add_argument('--gold_data_path', type = str, default = 'goldsequences-0-1-2-3-4-5-6-7-8-9-10-11-12-13-14-15-16-17-18-19-20-21-22-23-24-25-26-27-28-29.json', help = 'directory to store data')
 
 args = parser.parse_args()
 
@@ -23,7 +24,7 @@ data_split = args.data_split
 K = 10
 
 # load the goal trajectories
-gold_data_path = 'goldsequences-0-1-2-3-4-5-6-7-8-9-10-11-12-13-14-15-16-17-18-19-20-21-22-23-24-25-26-27-28-29.json'
+gold_data_path = args.gold_data_path
 with open(gold_data_path, 'r') as f:
     raw_data = json.load(f) 
 

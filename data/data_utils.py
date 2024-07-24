@@ -94,9 +94,7 @@ def add_current_objects(task_id, look, objects, limit=20):
 def sanitizeStr(inStr):
     if inStr is None:
         return inStr
-    out = inStr.replace("\n\t", " | ")
-    out = out.replace("\n", " | ")
-    out = out.replace("\t", " | ")
+    out = inStr.replace("\n\t", " | ").replace("\n", " | ").replace("\t", " | ") 
     out = out.replace("green house", "greenhouse")
     out = out.replace("activate bee hive", "open bee hive")
     out = out.replace("seed peach tree", "peach seed")
