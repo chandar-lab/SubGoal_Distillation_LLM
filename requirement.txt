@@ -1,0 +1,15 @@
+argparse
+torch
+transformers
+sentence_transformers
+scienceworld
+tqdm
+numpy
+datasets
+scikit-learn
+pandas
+retry
+openai
+collection
+wandb
+dataclasses
